@@ -98,7 +98,13 @@ bool formatoDelArchivoCSVCorrecto(FILE *archivoCSVParaImportar)
 ///##############################
 bool VentanaPrincipal::conexionCorrectaALaBdFuncional()
 {
-    if ((sqlite3_open("./baseDeDatosFuncional", &db) != SQLITE_OK))
+    ///##############################
+    ///### Inicialización de algunos argumentos de la base de datos funcional
+    ///##############################
+    baseDeDatosFuncional = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
+    baseDeDatosFuncional->setDatabaseName("./baseDeDatosFuncional");
+    nombreDeLaConexionALaBdFuncional = baseDeDatosFuncional->connectionName();
+    if (!baseDeDatosFuncional->open())
     {
         return false;
     }
@@ -132,7 +138,7 @@ void VentanaPrincipal::eliminarArchivoDeLaBdFuncional()
         ///### Falló el borrado de la base de datos funcional
         ///##############################
         QMessageBox mensajeDeErrorAlBorrarArchivoDeDatosFuncional;
-        mensajeDeErrorAlBorrarArchivoDeDatosFuncional.setText(QString::fromUtf8(errorAlBorrarArchivoDeDatosFuncional));
+        mensajeDeErrorAlBorrarArchivoDeDatosFuncional.setText(QString::fromUtf8(errorAlBorrarArchivoDeDatosTemporal));
         mensajeDeErrorAlBorrarArchivoDeDatosFuncional.exec();
     }
 }
@@ -145,9 +151,9 @@ void VentanaPrincipal::cerrarConexionALaBdFuncional()
     ///##############################
     ///### Operaciones para cerrar la conexión a la base de datos funcional
     ///##############################
+    //baseDeDatosFuncional->close();
     delete modeloDeLaBaseDeDatosFuncionalParaDatos;
     delete modeloDeLaBaseDeDatosFuncionalParaVariables;
-    baseDeDatosFuncional->close();
     delete baseDeDatosFuncional;
     QSqlDatabase::removeDatabase(nombreDeLaConexionALaBdFuncional);
 }
@@ -191,15 +197,13 @@ bool VentanaPrincipal::crearBaseDeDatosFuncional(bool variablesEstanEnLaPrimeraF
     //##############################
     ///### Inicio de transacciones en la base de datos funcional
     ///##############################
-    sqlite3_exec(db, "PRAGMA synchronous = OFF", NULL, NULL, &sErrMsg);
-    sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, &sErrMsg);
-    //sqlite3_exec(db, "BEGIN TRANSACTION", NULL, NULL, &sErrMsg);
+    QSqlQuery iniciarTransaccionesEnLaBaseDeDatosFuncional("BEGIN TRANSACTION");
     ///##############################
     ///### Borrado de la tabla de datos funcional y creación de la tabla de datos funcional con la nueva estructura
     ///### También se establece la tabla correspondiente al modelo de datos funcional
     ///##############################
-    sqlite3_exec(db, "DELETE FROM datos WHERE 1", NULL, NULL, &sErrMsg);
-    sqlite3_exec(db, consulta, NULL, NULL, &sErrMsg);
+    QSqlQuery borradoDeLaTablaDeDatosFuncional("DELETE FROM datos WHERE 1");
+    QSqlQuery crearTablaDeDatosFuncional (consulta);
     modeloDeLaBaseDeDatosFuncionalParaDatos->setTable("datos");
     ///##############################
     ///### Sección de inserción de los casos del archivo CSV en la tabla de datos funcional
@@ -213,7 +217,7 @@ bool VentanaPrincipal::crearBaseDeDatosFuncional(bool variablesEstanEnLaPrimeraF
         strcpy (consulta, "INSERT INTO datos VALUES(");
         strcat (consulta, linea.c_str());
         strcat (consulta, ")");
-        sqlite3_exec(db, consulta, NULL, NULL, &sErrMsg);
+        QSqlQuery insertarRegistrosDeDatos (consulta);
         totalDeCasosLeidos++;
     }
     archivoDeEntrada.close();
@@ -234,8 +238,8 @@ bool VentanaPrincipal::crearBaseDeDatosFuncional(bool variablesEstanEnLaPrimeraF
     ///### Borrado de la tabla de variables funcional y creación de la nueva tabla de variables funcional
     ///### También se establece la tabla correspondiente al modelo de variables funcional
     ///##############################
-    sqlite3_exec(db, "DELETE FROM variables WHERE 1", NULL, NULL, &sErrMsg);
-    sqlite3_exec(db, "CREATE TABLE variables (Nombre text, Tipo text, Etiqueta text, Valores text, Escala text)", NULL, NULL, &sErrMsg);
+    QSqlQuery borradoDeLaTablaDeVariablesFuncional("DELETE FROM variables WHERE 1");
+    QSqlQuery definirTablaDeVariablesFuncional("CREATE TABLE variables (Nombre text, Tipo text, Etiqueta text, Valores text, Escala text)");
     modeloDeLaBaseDeDatosFuncionalParaVariables->setTable("variables");
     ///##############################
     ///### Sección de inserción de las variables considerando sus características iniciales
@@ -247,19 +251,18 @@ bool VentanaPrincipal::crearBaseDeDatosFuncional(bool variablesEstanEnLaPrimeraF
         ///##############################
         char tipoInicialDeDatoDeLaVariable[9];
         sprintf (consulta, "SELECT COUNT(tipo) FROM (SELECT TYPEOF(var%lu) AS tipo FROM datos WHERE var%lu<>'') WHERE tipo='text'", i+1, i+1);
-        sqlite3_exec(db, consulta, NULL, NULL, &sErrMsg);
-
-        /*while (tipoDeDatoInicialDeLaVariable.next())
+        QSqlQuery tipoDeDatoInicialDeLaVariable(consulta);
+        while (tipoDeDatoInicialDeLaVariable.next())
         {
             if (tipoDeDatoInicialDeLaVariable.value(0).toInt() > 0)
             {
                 strcpy (tipoInicialDeDatoDeLaVariable, QString::fromUtf8(texto).toAscii().data());
             }
             else
-            {*/
+            {
                 strcpy (tipoInicialDeDatoDeLaVariable, QString::fromUtf8(numerico).toAscii().data());
-          /*  }
-        }*/
+            }
+        }
         ///##############################
         ///### Tipo de escala inicial de la variable i
         ///##############################
@@ -280,14 +283,13 @@ bool VentanaPrincipal::crearBaseDeDatosFuncional(bool variablesEstanEnLaPrimeraF
         {
             sprintf (consulta, "INSERT INTO variables VALUES ('var%lu', '%s', 'var%lu', '', '%s')", i+1, tipoInicialDeDatoDeLaVariable, i+1, tipoInicialDeEscalaLaVariable);
         }
-        sqlite3_exec(db, consulta, NULL, NULL, &sErrMsg);
+        QSqlQuery insertarDefinicionInicialDeVariables(consulta);
     }
     modeloDeLaBaseDeDatosFuncionalParaVariables->select();
     //##############################
     ///### Finalización de transacciones en la base de datos funcional
     ///##############################
-    //sqlite3_exec(db, "END TRANSACTION", NULL, NULL, &sErrMsg);
-    actualizarVistasDeLaBdFuncional();
+    QSqlQuery finalizarTransaccionesEnLaBaseDeDatosFuncional("COMMIT TRANSACTION");
 
     return true;
 }
@@ -325,16 +327,6 @@ void VentanaPrincipal::on_accionImportarArchivoConFormatoCSV_triggered()
         ///##############################
         else
         {
-            ///##############################
-            ///### Definición del diálogo para importar el archivo CSV seleccionado
-            ///##############################
-            dialogoParaImportarUnArchivoCSV = new DialogoParaImportarArchivosCSV();
-            dialogoParaImportarUnArchivoCSV->ui->nombreDelArchivoCSVAImportar->setText(nombreDeArchivoCSV.toAscii().data());
-            ///##############################
-            ///### Se elimina el botón de cerrado [X] de la parte superior derecha del diálogo de importación del
-            ///### archivo CSV y se realiza el desplegado del mismo en la pantalla
-            ///##############################
-            dialogoParaImportarUnArchivoCSV->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
             dialogoParaImportarUnArchivoCSV->show();
             ///##############################
             ///### Se verifica que el formato del archivo CSV seleccionado sea correcto
@@ -342,13 +334,12 @@ void VentanaPrincipal::on_accionImportarArchivoConFormatoCSV_triggered()
             if (formatoDelArchivoCSVCorrecto(archivoCSVParaImportar))
             {
                 ///##############################
-                ///### El formato del archivo CSV es correcto
+                ///### Definición de acciones--->procedimientos y funciones para el diálogo de importación
+                ///### de archivos CSV
                 ///##############################
-                numeroDeCasosTemporal = dimensionDeLosDatos.totalDeCasos;
-                if (baseDeDatosFuncionalEnUso)
-                {
-                    cerrarConexionALaBdFuncional();
-                }
+                QObject::connect (dialogoParaImportarUnArchivoCSV->ui->variablesEnPrimeraFila,SIGNAL(clicked()),this,SLOT(cambioEnCheckBoxVariablesEnLaPrimeraFila()));
+                QObject::connect (dialogoParaImportarUnArchivoCSV->ui->botonCancelar,SIGNAL(clicked()),this,SLOT(botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()));
+                QObject::connect (dialogoParaImportarUnArchivoCSV->ui->botonAceptar,SIGNAL(clicked()),this,SLOT(botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()));
             }
             else
             {
@@ -402,7 +393,7 @@ void VentanaPrincipal::botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()
     ///##############################
     ///### Regresar el control a la base de datos funcional que está en uso
     ///##############################
-    if (baseDeDatosFuncionalEnUso)
+    if (baseDeDatosEnUso)
     {
         if (!conexionCorrectaALaBdFuncional())
         {
@@ -415,7 +406,7 @@ void VentanaPrincipal::botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()
             mensajeDeErrorNoSePuedeReconectarALaBaseDeDatosFuncional.exec();
             cerrarConexionALaBdFuncional();
             eliminarArchivoDeLaBdFuncional();
-            baseDeDatosFuncionalEnUso = false;
+            baseDeDatosEnUso = false;
         }
         else
         {
@@ -439,7 +430,7 @@ void VentanaPrincipal::botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()
     ///##############################
     ///### Llamar al procedimiento de guardar base de datos funcional en caso de que esté en uso actualmente
     ///##############################
-    if (baseDeDatosFuncionalEnUso)
+    if (baseDeDatosEnUso)
     {
 
     }
@@ -473,7 +464,7 @@ void VentanaPrincipal::botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()
             }
             else
             {
-                baseDeDatosFuncionalEnUso = true;
+                baseDeDatosEnUso = true;
             }
         }
     }

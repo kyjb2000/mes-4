@@ -9,9 +9,12 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
 {
     ui->setupUi(this);
     ///##############################
-    ///### Variable de control de la base de datos funcional en uso
+    ///### Incialización de variables necesarias al abrir la aplicación
     ///##############################
-    baseDeDatosFuncionalEnUso = false;
+    baseDeDatosEnUso = false;
+    dialogoParaImportarUnArchivoCSV = new DialogoParaImportarArchivosCSV();
+    dialogoParaImportarUnArchivoCSV->ui->nombreDelArchivoCSVAImportar->setText(nombreDeArchivoCSV.toAscii().data());
+    dialogoParaImportarUnArchivoCSV->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 }
 
 VentanaPrincipal::~VentanaPrincipal()
@@ -28,7 +31,7 @@ void VentanaPrincipal::closeEvent(QCloseEvent *event)
     ///##############################
     ///### Verificar si hay una base de datos funcional activa antes de salir
     ///##############################
-    if (baseDeDatosFuncionalEnUso)
+    if (baseDeDatosEnUso)
     {
         guardarBaseDeDatosFuncional = new DialogoParaGuardarArchivoDeDatosSiONo(0, true);
         guardarBaseDeDatosFuncional->show();

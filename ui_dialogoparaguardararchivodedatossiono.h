@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialogoparaguardararchivodedatossiono.ui'
 **
-** Created: Thu Feb 21 13:13:29 2013
+** Created: Fri Feb 22 13:23:11 2013
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -27,6 +27,7 @@ public:
     QLabel *etiquetaDeseaGuardarElARchivoDeDatosActual;
     QPushButton *botonNo;
     QPushButton *botonSi;
+    QLabel *etiquetaDeseaGuardarElARchivoDeDatosActual_2;
 
     void setupUi(QDialog *DialogoParaGuardarArchivoDeDatosSiONo)
     {
@@ -36,7 +37,7 @@ public:
         DialogoParaGuardarArchivoDeDatosSiONo->resize(291, 99);
         etiquetaDeseaGuardarElARchivoDeDatosActual = new QLabel(DialogoParaGuardarArchivoDeDatosSiONo);
         etiquetaDeseaGuardarElARchivoDeDatosActual->setObjectName(QString::fromUtf8("etiquetaDeseaGuardarElARchivoDeDatosActual"));
-        etiquetaDeseaGuardarElARchivoDeDatosActual->setGeometry(QRect(30, 18, 240, 15));
+        etiquetaDeseaGuardarElARchivoDeDatosActual->setGeometry(QRect(39, 18, 219, 15));
         botonNo = new QPushButton(DialogoParaGuardarArchivoDeDatosSiONo);
         botonNo->setObjectName(QString::fromUtf8("botonNo"));
         botonNo->setGeometry(QRect(51, 60, 84, 21));
@@ -52,9 +53,13 @@ public:
         font1.setBold(false);
         font1.setWeight(50);
         botonSi->setFont(font1);
+        etiquetaDeseaGuardarElARchivoDeDatosActual_2 = new QLabel(DialogoParaGuardarArchivoDeDatosSiONo);
+        etiquetaDeseaGuardarElARchivoDeDatosActual_2->setObjectName(QString::fromUtf8("etiquetaDeseaGuardarElARchivoDeDatosActual_2"));
+        etiquetaDeseaGuardarElARchivoDeDatosActual_2->setGeometry(QRect(40, 39, 101, 16));
         botonNo->raise();
         etiquetaDeseaGuardarElARchivoDeDatosActual->raise();
         botonSi->raise();
+        etiquetaDeseaGuardarElARchivoDeDatosActual_2->raise();
 
         retranslateUi(DialogoParaGuardarArchivoDeDatosSiONo);
 
@@ -64,9 +69,10 @@ public:
     void retranslateUi(QDialog *DialogoParaGuardarArchivoDeDatosSiONo)
     {
         DialogoParaGuardarArchivoDeDatosSiONo->setWindowTitle(QApplication::translate("DialogoParaGuardarArchivoDeDatosSiONo", "Guardar archivo de datos actual", 0, QApplication::UnicodeUTF8));
-        etiquetaDeseaGuardarElARchivoDeDatosActual->setText(QApplication::translate("DialogoParaGuardarArchivoDeDatosSiONo", "\302\277Desea guardar el archivo de datos actual?", 0, QApplication::UnicodeUTF8));
+        etiquetaDeseaGuardarElARchivoDeDatosActual->setText(QApplication::translate("DialogoParaGuardarArchivoDeDatosSiONo", "\302\277Desea guardar el archivo de", 0, QApplication::UnicodeUTF8));
         botonNo->setText(QApplication::translate("DialogoParaGuardarArchivoDeDatosSiONo", "No", 0, QApplication::UnicodeUTF8));
         botonSi->setText(QApplication::translate("DialogoParaGuardarArchivoDeDatosSiONo", "S\303\255", 0, QApplication::UnicodeUTF8));
+        etiquetaDeseaGuardarElARchivoDeDatosActual_2->setText(QApplication::translate("DialogoParaGuardarArchivoDeDatosSiONo", "datos actual?", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

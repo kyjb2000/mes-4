@@ -18,18 +18,13 @@
 #include <sys/stat.h>
 #include <fstream>
 #include <QSqlQuery>
-#include "sqlite3.h"
-
-//using namespace std;
 
 ///##############################
-///### Variable de control relativas al manejo de la base de datos funcional
+///### Variables de la base de datos
 ///##############################
-bool baseDeDatosFuncionalEnUso;
+bool baseDeDatosEnUso;
 DialogoParaGuardarArchivoDeDatosSiONo *guardarBaseDeDatosFuncional;
 QSqlRecord arregloDeVariablesFuncional;
-sqlite3 * db;
-char * sErrMsg = 0;
 
 ///##############################
 ///### Variables para la importación de un archivo con formato CSV

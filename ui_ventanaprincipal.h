@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ventanaprincipal.ui'
 **
-** Created: Thu Feb 21 13:13:29 2013
+** Created: Fri Feb 22 12:56:03 2013
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

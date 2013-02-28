@@ -9,8 +9,12 @@
 ///### Errores relativos al proceso de importación de un archivo CSV
 ///##############################
 const char *errorAlIntentarAbrirElArchivoCSV = "Error al intentar abrir el archivo CSV";
+
 const char *errorDeInicializacionDelAnalizadorDelArchivoCSV = "Error al inicializar el analizador del archivo CSV";
 const char *formatoIncorrectoDelArchivoCSV = "Formato incorrecto del archivo CSV";
+const char *noSePuedeEstablecerLaConexionALaBaseDeDatosTemporal = "No se puede establecer la conexión con la base de datos temporal - Intente borrar manualmente el archivo <<<baseDeDatosTemporal>>>";
+const char *errorAlCrearLaBaseDeDatosTemporal = "Error al crear la base de datos temporal - Intente borrar manualmente el archivo <<<baseDeDatosTemporal>>>";
+const char *errorAlBorrarArchivoDeDatosTemporal = "No se puede borrar el archivo temporal de datos <<<baseDeDatosTemporal>>> - Eliminarlo manualmente y reiniciar mes";
 const char *errorNoSePuedeCrearLaBaseDeDatosFuncional = "No se puede crear la base de datos funcional";
 const char *errorAlCrearLaBaseDeDatosFuncional = "Error al crear la base de datos funcional <<<baseDeDatosFuncional>>> - Eliminarlo manualmente y reiniciar mes";
 const char *errorAlBorrarArchivoDeDatosFuncional = "No se puede borrar el archivo funcional de datos <<<baseDeDatosFuncional>>> - Eliminarlo manualmente y reiniciar mes";
