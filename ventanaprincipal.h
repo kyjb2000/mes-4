@@ -30,22 +30,19 @@ private slots:
     ///##############################
     void on_accionSalir_triggered();
     void on_accionImportarArchivoConFormatoCSV_triggered();
-    void cambioEnCheckBoxVariablesEnLaPrimeraFila();
 
     ///##############################
     ///### Funciones relativas al proceso de manejo de archivos csv
     ///##############################
+    void insertarPrimeros99CasosOMenosDelArchivoCSV();
+    void cambioEnCheckBoxVariablesEnLaPrimeraFila();
     void botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido();
     void botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido();
 
     ///##############################
     ///### Funciones de la base de datos funcional
     ///##############################
-    bool conexionCorrectaALaBdFuncional();
-    void cerrarConexionALaBdFuncional();
-    void eliminarArchivoDeLaBdFuncional();
-    void actualizarVistasDeLaBdFuncional();
-    bool crearBaseDeDatosFuncional(bool variablesEstanEnLaPrimeraFila);
+
 };
 
 #endif // VENTANAPRINCIPAL_H

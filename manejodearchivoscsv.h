@@ -94,204 +94,36 @@ bool formatoDelArchivoCSVCorrecto(FILE *archivoCSVParaImportar)
 }
 
 ///##############################
-///### Función para realizar la conexión a la base de datos funcional
+///### Procedimiento para insertar los primeros 99 casos -o menos- del archivo CSV
 ///##############################
-bool VentanaPrincipal::conexionCorrectaALaBdFuncional()
+void VentanaPrincipal::insertarPrimeros99CasosOMenosDelArchivoCSV()
 {
-    ///##############################
-    ///### Inicialización de algunos argumentos de la base de datos funcional
-    ///##############################
-    baseDeDatosFuncional = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
-    baseDeDatosFuncional->setDatabaseName("./baseDeDatosFuncional");
-    nombreDeLaConexionALaBdFuncional = baseDeDatosFuncional->connectionName();
-    if (!baseDeDatosFuncional->open())
-    {
-        return false;
-    }
-    else
-    {
-        ///##############################
-        ///### Crear el modelo de datos funcional y ligarlo al qtableview correspondiente
-        ///##############################
-        modeloDeLaBaseDeDatosFuncionalParaDatos = new QSqlTableModel;
-        modeloDeLaBaseDeDatosFuncionalParaDatos->setEditStrategy(QSqlTableModel::OnFieldChange);
-        ui->tablaDeDatos->setModel(modeloDeLaBaseDeDatosFuncionalParaDatos);
-        ///##############################
-        ///### Crear el modelo de variables funcional y ligarlo al qtableview
-        ///##############################
-        modeloDeLaBaseDeDatosFuncionalParaVariables = new QSqlTableModel;
-        modeloDeLaBaseDeDatosFuncionalParaVariables->setEditStrategy(QSqlTableModel::OnFieldChange);
-        ui->tablaDeVariables->setModel(modeloDeLaBaseDeDatosFuncionalParaVariables);
-    }
-
-    return true;
-}
-
-///##############################
-///### Procedimiento para eliminar el archivo de la base de datos funcional
-///##############################
-void VentanaPrincipal::eliminarArchivoDeLaBdFuncional()
-{
-    if (remove("./baseDeDatosFuncional") < -1)
-    {
-        ///##############################
-        ///### Falló el borrado de la base de datos funcional
-        ///##############################
-        QMessageBox mensajeDeErrorAlBorrarArchivoDeDatosFuncional;
-        mensajeDeErrorAlBorrarArchivoDeDatosFuncional.setText(QString::fromUtf8(errorAlBorrarArchivoDeDatosTemporal));
-        mensajeDeErrorAlBorrarArchivoDeDatosFuncional.exec();
-    }
-}
-
-///##############################
-///### Procedimiento para cerrar la conexión a la base de datos funcional
-///##############################
-void VentanaPrincipal::cerrarConexionALaBdFuncional()
-{
-    ///##############################
-    ///### Operaciones para cerrar la conexión a la base de datos funcional
-    ///##############################
-    //baseDeDatosFuncional->close();
-    delete modeloDeLaBaseDeDatosFuncionalParaDatos;
-    delete modeloDeLaBaseDeDatosFuncionalParaVariables;
-    delete baseDeDatosFuncional;
-    QSqlDatabase::removeDatabase(nombreDeLaConexionALaBdFuncional);
-}
-
-///##############################
-///### Procedimiento de "refresh" de las vistas de datos y de variables de la base de datos funcional
-///##############################
-void VentanaPrincipal::actualizarVistasDeLaBdFuncional()
-{
-    modeloDeLaBaseDeDatosFuncionalParaDatos->setTable("datos");
-    modeloDeLaBaseDeDatosFuncionalParaDatos->select();
-    modeloDeLaBaseDeDatosFuncionalParaVariables->setTable("variables");
-    modeloDeLaBaseDeDatosFuncionalParaVariables->select();
-}
-
-///##############################
-///### Función para crear la base de datos funcional
-///##############################
-bool VentanaPrincipal::crearBaseDeDatosFuncional(bool variablesEstanEnLaPrimeraFila)
-{
-    char numero[9];
     unsigned long totalDeCasosLeidos;
 
     ///##############################
-    ///### Se abre el archivo CSV
+    ///### Sección de inserción de los primeros 99 casos -o menos- del archivo CSV en la tabla de datos temporal
     ///##############################
     archivoDeEntrada.open(nombreDeArchivoCSV.toAscii().data());
-    ///##############################
-    ///### Definición del diccionario de datos de la tabla de datos funcional
-    ///##############################
-    strcpy (consulta, "CREATE TABLE datos (");
-    for (unsigned int x=1; x<numeroDeVariablesFuncional; x++)
-    {
-        sprintf (numero, "var%d", x);
-        strcat (consulta, numero);
-        strcat (consulta, " NUMERIC,");
-    }
-    sprintf (numero, "var%ld", numeroDeVariablesFuncional);
-    strcat (consulta, numero);
-    strcat (consulta, " NUMERIC)");
-    //##############################
-    ///### Inicio de transacciones en la base de datos funcional
-    ///##############################
-    QSqlQuery iniciarTransaccionesEnLaBaseDeDatosFuncional("BEGIN TRANSACTION");
-    ///##############################
-    ///### Borrado de la tabla de datos funcional y creación de la tabla de datos funcional con la nueva estructura
-    ///### También se establece la tabla correspondiente al modelo de datos funcional
-    ///##############################
-    QSqlQuery borradoDeLaTablaDeDatosFuncional("DELETE FROM datos WHERE 1");
-    QSqlQuery crearTablaDeDatosFuncional (consulta);
-    modeloDeLaBaseDeDatosFuncionalParaDatos->setTable("datos");
-    ///##############################
-    ///### Sección de inserción de los casos del archivo CSV en la tabla de datos funcional
-    ///##############################
-    totalDeCasosLeidos = 0;    
-    ///##############################
-    ///### Inserción de los casos
-    ///##############################
-    while(getline(archivoDeEntrada, linea)  && archivoDeEntrada.good())
-    {
-        strcpy (consulta, "INSERT INTO datos VALUES(");
-        strcat (consulta, linea.c_str());
-        strcat (consulta, ")");
-        QSqlQuery insertarRegistrosDeDatos (consulta);
-        totalDeCasosLeidos++;
-    }
-    archivoDeEntrada.close();
-    modeloDeLaBaseDeDatosFuncionalParaDatos->select();
+    dialogoParaImportarUnArchivoCSV->ui->nombreDelArchivoCSVAImportar->setText(nombreDeArchivoCSV.toAscii().data());
+    dialogoParaImportarUnArchivoCSV->ui->numeroDeVariables->setText(QString::number(numeroDeVariablesTemporal));
+    dialogoParaImportarUnArchivoCSV->ui->numeroDeCasos->setText(QString::number(numeroDeCasosTemporal));
     ///##############################
     ///### Se elimina el primer registro en caso de que las variables estén en la primera línea
     ///##############################
-    if (variablesEstanEnLaPrimeraFila)
+    if (dialogoParaImportarUnArchivoCSV->ui->variablesEnPrimeraFila->isChecked())
     {
-        arregloDeVariablesFuncional = modeloDeLaBaseDeDatosFuncionalParaDatos->record(0);
-        modeloDeLaBaseDeDatosFuncionalParaDatos->removeRow(0);
-        for (unsigned long i=0; i<numeroDeVariablesFuncional; i++)
-        {
-            modeloDeLaBaseDeDatosFuncionalParaDatos->setHeaderData(i, Qt::Horizontal, arregloDeVariablesFuncional.value(i).toString().toAscii().data());
-        }
+        getline(archivoDeEntrada, linea);
     }
-    ///##############################
-    ///### Borrado de la tabla de variables funcional y creación de la nueva tabla de variables funcional
-    ///### También se establece la tabla correspondiente al modelo de variables funcional
-    ///##############################
-    QSqlQuery borradoDeLaTablaDeVariablesFuncional("DELETE FROM variables WHERE 1");
-    QSqlQuery definirTablaDeVariablesFuncional("CREATE TABLE variables (Nombre text, Tipo text, Etiqueta text, Valores text, Escala text)");
-    modeloDeLaBaseDeDatosFuncionalParaVariables->setTable("variables");
-    ///##############################
-    ///### Sección de inserción de las variables considerando sus características iniciales
-    ///##############################
-    for (unsigned long i=0; i<numeroDeVariablesFuncional; i++)
+    totalDeCasosLeidos = 0;
+    while(getline(archivoDeEntrada, linea)  && archivoDeEntrada.good() && (totalDeCasosLeidos < 99))
     {
-        ///##############################
-        ///### Detección del tipo de dato inicial de la variable i
-        ///##############################
-        char tipoInicialDeDatoDeLaVariable[9];
-        sprintf (consulta, "SELECT COUNT(tipo) FROM (SELECT TYPEOF(var%lu) AS tipo FROM datos WHERE var%lu<>'') WHERE tipo='text'", i+1, i+1);
-        QSqlQuery tipoDeDatoInicialDeLaVariable(consulta);
-        while (tipoDeDatoInicialDeLaVariable.next())
-        {
-            if (tipoDeDatoInicialDeLaVariable.value(0).toInt() > 0)
-            {
-                strcpy (tipoInicialDeDatoDeLaVariable, QString::fromUtf8(texto).toAscii().data());
-            }
-            else
-            {
-                strcpy (tipoInicialDeDatoDeLaVariable, QString::fromUtf8(numerico).toAscii().data());
-            }
-        }
-        ///##############################
-        ///### Tipo de escala inicial de la variable i
-        ///##############################
-        char tipoInicialDeEscalaLaVariable[12];
-        if (strcmp(tipoInicialDeDatoDeLaVariable, "Texto") == 0)
-        {
-            strcpy (tipoInicialDeEscalaLaVariable, QString::fromUtf8(nominal).toAscii().data());
-        }
-        else
-        {
-            strcpy (tipoInicialDeEscalaLaVariable, QString::fromUtf8(escala).toAscii().data());
-        }
-        if (variablesEstanEnLaPrimeraFila)
-        {
-            sprintf (consulta, "INSERT INTO variables VALUES ('%s', '%s', '%s', '', '%s')", arregloDeVariablesFuncional.value(i).toString().toAscii().data(), tipoInicialDeDatoDeLaVariable, arregloDeVariablesTemporal.value(i).toString().toAscii().data(), tipoInicialDeEscalaLaVariable);
-        }
-        else
-        {
-            sprintf (consulta, "INSERT INTO variables VALUES ('var%lu', '%s', 'var%lu', '', '%s')", i+1, tipoInicialDeDatoDeLaVariable, i+1, tipoInicialDeEscalaLaVariable);
-        }
-        QSqlQuery insertarDefinicionInicialDeVariables(consulta);
+        /*strcpy (consulta, "insert into datos values(");
+        strcat (consulta, linea.c_str());
+        strcat (consulta, ")");
+        QSqlQuery insertarRegistrosDeDatos (consulta, dialogoParaImportarArchivosCSV->baseDeDatosTemporal);*/
+        totalDeCasosLeidos++;
     }
-    modeloDeLaBaseDeDatosFuncionalParaVariables->select();
-    //##############################
-    ///### Finalización de transacciones en la base de datos funcional
-    ///##############################
-    QSqlQuery finalizarTransaccionesEnLaBaseDeDatosFuncional("COMMIT TRANSACTION");
-
-    return true;
+    archivoDeEntrada.close();
 }
 
 ///##############################
@@ -321,21 +153,23 @@ void VentanaPrincipal::on_accionImportarArchivoConFormatoCSV_triggered()
             mensajeErrorAlIntentarAbrirElArchivoCSV.setText(QString::fromUtf8(errorAlIntentarAbrirElArchivoCSV));
             mensajeErrorAlIntentarAbrirElArchivoCSV.exec();
         }
-        ///##############################
-        ///### Se pudo abrir el archivo CSV para lectura y se procede a realizar el análisis del mismo y en su
-        ///### caso el vaciado a las tablas correspodientes
-        ///##############################
         else
         {
+            ///##############################
+            ///### Se muestra el diálogo para la importación de un archivo CSV
+            ///##############################
             dialogoParaImportarUnArchivoCSV->show();
             ///##############################
             ///### Se verifica que el formato del archivo CSV seleccionado sea correcto
             ///##############################
+            numeroDeVariablesTemporal = 0;
+            numeroDeCasosTemporal = 0;
             if (formatoDelArchivoCSVCorrecto(archivoCSVParaImportar))
             {
+                numeroDeCasosTemporal = dimensionDeLosDatos.totalDeCasos;
+                insertarPrimeros99CasosOMenosDelArchivoCSV();
                 ///##############################
-                ///### Definición de acciones--->procedimientos y funciones para el diálogo de importación
-                ///### de archivos CSV
+                ///### Definición de acciones--->procedimientos y funciones para el diálogo de importación de archivos CSV
                 ///##############################
                 QObject::connect (dialogoParaImportarUnArchivoCSV->ui->variablesEnPrimeraFila,SIGNAL(clicked()),this,SLOT(cambioEnCheckBoxVariablesEnLaPrimeraFila()));
                 QObject::connect (dialogoParaImportarUnArchivoCSV->ui->botonCancelar,SIGNAL(clicked()),this,SLOT(botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()));
@@ -344,7 +178,7 @@ void VentanaPrincipal::on_accionImportarArchivoConFormatoCSV_triggered()
             else
             {
                 ///##############################
-                ///### El formato del archivo CSV es incorrecto
+                ///### Formato del archivo CSV es incorrecto
                 ///##############################
                 QMessageBox mensajeFormatoIncorrectoDelArchivoCSV;
                 mensajeFormatoIncorrectoDelArchivoCSV.setText(QString::fromUtf8(formatoIncorrectoDelArchivoCSV));
@@ -390,32 +224,7 @@ void VentanaPrincipal::cambioEnCheckBoxVariablesEnLaPrimeraFila()
 ///##############################
 void VentanaPrincipal::botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()
 {
-    ///##############################
-    ///### Regresar el control a la base de datos funcional que está en uso
-    ///##############################
-    if (baseDeDatosEnUso)
-    {
-        if (!conexionCorrectaALaBdFuncional())
-        {
-            ///##############################
-            ///### Falló la creación de la base de datos funcional
-            ///### y se despliega el error correspondiente
-            ///##############################
-            QMessageBox mensajeDeErrorNoSePuedeReconectarALaBaseDeDatosFuncional;
-            mensajeDeErrorNoSePuedeReconectarALaBaseDeDatosFuncional.setText(QString::fromUtf8(errorNoSePuedeReconectarALaBaseDeDatosFuncional));
-            mensajeDeErrorNoSePuedeReconectarALaBaseDeDatosFuncional.exec();
-            cerrarConexionALaBdFuncional();
-            eliminarArchivoDeLaBdFuncional();
-            baseDeDatosEnUso = false;
-        }
-        else
-        {
-            //##############################
-            ///### Actualizar las vistas de la base de datos funcional
-            ///##############################
-            actualizarVistasDeLaBdFuncional();
-        }
-    }
+
     ///##############################
     ///### Se llama al destructor del diálogo para importar archivos CSV
     ///##############################
@@ -428,46 +237,8 @@ void VentanaPrincipal::botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()
 void VentanaPrincipal::botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()
 {
     ///##############################
-    ///### Llamar al procedimiento de guardar base de datos funcional en caso de que esté en uso actualmente
+    ///### Se llama al destructor del diálogo para importar archivos CSV
     ///##############################
-    if (baseDeDatosEnUso)
-    {
-
-    }
-    else
-    {
-        if (!conexionCorrectaALaBdFuncional())
-        {
-            ///##############################
-            ///### Falló la creación de la base de datos funcional
-            ///### y se despliega el error correspondiente
-            ///##############################
-            QMessageBox mensajeDeErrorNoSePuedeCrearLaBaseDeDatosFuncional;
-            mensajeDeErrorNoSePuedeCrearLaBaseDeDatosFuncional.setText(QString::fromUtf8(errorNoSePuedeCrearLaBaseDeDatosFuncional));
-            mensajeDeErrorNoSePuedeCrearLaBaseDeDatosFuncional.exec();
-        }
-        else
-        {
-            ///##############################
-            ///### Definición y desplegado de la ventana de progreso del vaciado del archivo CSV
-            ///##############################
-            numeroDeCasosFuncional = numeroDeCasosTemporal;
-            numeroDeVariablesFuncional = numeroDeVariablesTemporal;
-            if (!crearBaseDeDatosFuncional(dialogoParaImportarUnArchivoCSV->ui->variablesEnPrimeraFila->isChecked()))
-            {
-                ///##############################
-                ///### Error al crear la base de datos funcional
-                ///##############################
-                QMessageBox mensajeErrorAlCrearLaBaseDeDatosFuncional;
-                mensajeErrorAlCrearLaBaseDeDatosFuncional.setText(QString::fromUtf8(errorAlCrearLaBaseDeDatosFuncional));
-                mensajeErrorAlCrearLaBaseDeDatosFuncional.exec();
-            }
-            else
-            {
-                baseDeDatosEnUso = true;
-            }
-        }
-    }
     dialogoParaImportarUnArchivoCSV->~DialogoParaImportarArchivosCSV();
 }
 

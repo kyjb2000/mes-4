@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ventanaprincipal.h'
 **
-** Created: Thu Feb 28 12:11:58 2013
+** Created: Thu Feb 28 17:11:22 2013
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_VentanaPrincipal[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -34,13 +34,9 @@ static const uint qt_meta_data_VentanaPrincipal[] = {
       18,   17,   17,   17, 0x08,
       45,   17,   17,   17, 0x08,
       95,   17,   17,   17, 0x08,
-     138,   17,   17,   17, 0x08,
-     196,   17,   17,   17, 0x08,
-     258,   17,  253,   17, 0x08,
-     291,   17,   17,   17, 0x08,
-     322,   17,   17,   17, 0x08,
-     355,   17,   17,   17, 0x08,
-     419,  389,  253,   17, 0x08,
+     140,   17,   17,   17, 0x08,
+     183,   17,   17,   17, 0x08,
+     241,   17,   17,   17, 0x08,
 
        0        // eod
 };
@@ -48,15 +44,10 @@ static const uint qt_meta_data_VentanaPrincipal[] = {
 static const char qt_meta_stringdata_VentanaPrincipal[] = {
     "VentanaPrincipal\0\0on_accionSalir_triggered()\0"
     "on_accionImportarArchivoConFormatoCSV_triggered()\0"
+    "insertarPrimeros99CasosOMenosDelArchivoCSV()\0"
     "cambioEnCheckBoxVariablesEnLaPrimeraFila()\0"
     "botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()\0"
     "botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()\0"
-    "bool\0conexionCorrectaALaBdFuncional()\0"
-    "cerrarConexionALaBdFuncional()\0"
-    "eliminarArchivoDeLaBdFuncional()\0"
-    "actualizarVistasDeLaBdFuncional()\0"
-    "variablesEstanEnLaPrimeraFila\0"
-    "crearBaseDeDatosFuncional(bool)\0"
 };
 
 const QMetaObject VentanaPrincipal::staticMetaObject = {
@@ -90,19 +81,13 @@ int VentanaPrincipal::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: on_accionSalir_triggered(); break;
         case 1: on_accionImportarArchivoConFormatoCSV_triggered(); break;
-        case 2: cambioEnCheckBoxVariablesEnLaPrimeraFila(); break;
-        case 3: botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido(); break;
-        case 4: botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido(); break;
-        case 5: { bool _r = conexionCorrectaALaBdFuncional();
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 6: cerrarConexionALaBdFuncional(); break;
-        case 7: eliminarArchivoDeLaBdFuncional(); break;
-        case 8: actualizarVistasDeLaBdFuncional(); break;
-        case 9: { bool _r = crearBaseDeDatosFuncional((*reinterpret_cast< bool(*)>(_a[1])));
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 2: insertarPrimeros99CasosOMenosDelArchivoCSV(); break;
+        case 3: cambioEnCheckBoxVariablesEnLaPrimeraFila(); break;
+        case 4: botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido(); break;
+        case 5: botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido(); break;
         default: ;
         }
-        _id -= 10;
+        _id -= 6;
     }
     return _id;
 }

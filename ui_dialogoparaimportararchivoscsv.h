@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialogoparaimportararchivoscsv.ui'
 **
-** Created: Thu Feb 28 12:25:39 2013
+** Created: Thu Feb 28 17:16:43 2013
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -126,15 +126,18 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
         palette.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
         cajaDeDatos->setPalette(palette);
-        cajaDeDatos->setFont(font);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Arial"));
+        font1.setPointSize(9);
+        cajaDeDatos->setFont(font1);
         cajaDeDatos->setAutoFillBackground(true);
         tablaDeDatosTemporal = new QTableWidget(cajaDeDatos);
         tablaDeDatosTemporal->setObjectName(QString::fromUtf8("tablaDeDatosTemporal"));
         tablaDeDatosTemporal->setEnabled(true);
         tablaDeDatosTemporal->setGeometry(QRect(0, 39, 654, 120));
-        QFont font1;
-        font1.setPointSize(9);
-        tablaDeDatosTemporal->setFont(font1);
+        QFont font2;
+        font2.setPointSize(9);
+        tablaDeDatosTemporal->setFont(font2);
         tablaDeDatosTemporal->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tablaDeDatosTemporal->setTabKeyNavigation(false);
         tablaDeDatosTemporal->setProperty("showDropIndicator", QVariant(false));
@@ -142,7 +145,7 @@ public:
         etiquetaNumeroDeCasos = new QLabel(cajaDeDatos);
         etiquetaNumeroDeCasos->setObjectName(QString::fromUtf8("etiquetaNumeroDeCasos"));
         etiquetaNumeroDeCasos->setGeometry(QRect(474, 15, 51, 15));
-        etiquetaNumeroDeCasos->setFont(font1);
+        etiquetaNumeroDeCasos->setFont(font2);
         numeroDeCasos = new QLineEdit(cajaDeDatos);
         numeroDeCasos->setObjectName(QString::fromUtf8("numeroDeCasos"));
         numeroDeCasos->setGeometry(QRect(525, 9, 111, 24));
@@ -154,7 +157,7 @@ public:
         etiquetaPorcentajeDeVaciado = new QLabel(cajaDeDatos);
         etiquetaPorcentajeDeVaciado->setObjectName(QString::fromUtf8("etiquetaPorcentajeDeVaciado"));
         etiquetaPorcentajeDeVaciado->setGeometry(QRect(348, 15, 57, 15));
-        etiquetaPorcentajeDeVaciado->setFont(font1);
+        etiquetaPorcentajeDeVaciado->setFont(font2);
         cajaDeVariables = new QGroupBox(DialogoParaImportarArchivosCSV);
         cajaDeVariables->setObjectName(QString::fromUtf8("cajaDeVariables"));
         cajaDeVariables->setGeometry(QRect(9, 81, 654, 177));
@@ -205,13 +208,13 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
         palette1.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
         cajaDeVariables->setPalette(palette1);
-        cajaDeVariables->setFont(font);
+        cajaDeVariables->setFont(font1);
         cajaDeVariables->setAutoFillBackground(true);
         variablesEnPrimeraFila = new QCheckBox(cajaDeVariables);
         variablesEnPrimeraFila->setObjectName(QString::fromUtf8("variablesEnPrimeraFila"));
         variablesEnPrimeraFila->setEnabled(false);
         variablesEnPrimeraFila->setGeometry(QRect(12, 21, 186, 21));
-        variablesEnPrimeraFila->setFont(font1);
+        variablesEnPrimeraFila->setFont(font2);
         numeroDeVariables = new QLineEdit(cajaDeVariables);
         numeroDeVariables->setObjectName(QString::fromUtf8("numeroDeVariables"));
         numeroDeVariables->setGeometry(QRect(576, 18, 60, 24));
@@ -220,14 +223,11 @@ public:
         etiquetaNumeroDeVariables = new QLabel(cajaDeVariables);
         etiquetaNumeroDeVariables->setObjectName(QString::fromUtf8("etiquetaNumeroDeVariables"));
         etiquetaNumeroDeVariables->setGeometry(QRect(507, 24, 60, 15));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Arial"));
-        font2.setPointSize(9);
-        etiquetaNumeroDeVariables->setFont(font2);
+        etiquetaNumeroDeVariables->setFont(font1);
         tablaDeVariablesTemporal = new QTableWidget(cajaDeVariables);
         tablaDeVariablesTemporal->setObjectName(QString::fromUtf8("tablaDeVariablesTemporal"));
         tablaDeVariablesTemporal->setGeometry(QRect(0, 51, 654, 111));
-        tablaDeVariablesTemporal->setFont(font1);
+        tablaDeVariablesTemporal->setFont(font2);
         tablaDeVariablesTemporal->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tablaDeVariablesTemporal->setTabKeyNavigation(false);
         tablaDeVariablesTemporal->setProperty("showDropIndicator", QVariant(false));
@@ -282,12 +282,12 @@ public:
         palette2.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
         palette2.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
         cajaDeDatosDelArchivoCSV->setPalette(palette2);
-        cajaDeDatosDelArchivoCSV->setFont(font);
+        cajaDeDatosDelArchivoCSV->setFont(font1);
         cajaDeDatosDelArchivoCSV->setAutoFillBackground(true);
         etiquetaNombre = new QLabel(cajaDeDatosDelArchivoCSV);
         etiquetaNombre->setObjectName(QString::fromUtf8("etiquetaNombre"));
         etiquetaNombre->setGeometry(QRect(12, 27, 45, 15));
-        etiquetaNombre->setFont(font1);
+        etiquetaNombre->setFont(font2);
         nombreDelArchivoCSVAImportar = new QLineEdit(cajaDeDatosDelArchivoCSV);
         nombreDelArchivoCSVAImportar->setObjectName(QString::fromUtf8("nombreDelArchivoCSVAImportar"));
         nombreDelArchivoCSVAImportar->setGeometry(QRect(66, 21, 450, 24));
@@ -296,7 +296,7 @@ public:
         etiquetaPorcentajeDeAnalisis = new QLabel(cajaDeDatosDelArchivoCSV);
         etiquetaPorcentajeDeAnalisis->setObjectName(QString::fromUtf8("etiquetaPorcentajeDeAnalisis"));
         etiquetaPorcentajeDeAnalisis->setGeometry(QRect(528, 27, 57, 15));
-        etiquetaPorcentajeDeAnalisis->setFont(font1);
+        etiquetaPorcentajeDeAnalisis->setFont(font2);
         porcentajeDeAnalisis = new QProgressBar(cajaDeDatosDelArchivoCSV);
         porcentajeDeAnalisis->setObjectName(QString::fromUtf8("porcentajeDeAnalisis"));
         porcentajeDeAnalisis->setGeometry(QRect(591, 21, 45, 24));

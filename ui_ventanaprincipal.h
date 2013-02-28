@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ventanaprincipal.ui'
 **
-** Created: Fri Feb 22 12:56:03 2013
+** Created: Thu Feb 28 17:06:32 2013
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -269,7 +269,7 @@ public:
         cajaDeOpcionesDeAnalisisDeEstadisticosDescriptivos->setFont(font2);
         estadisticaDescriptivaUnivariada = new QWidget();
         estadisticaDescriptivaUnivariada->setObjectName(QString::fromUtf8("estadisticaDescriptivaUnivariada"));
-        estadisticaDescriptivaUnivariada->setGeometry(QRect(0, 0, 480, 560));
+        estadisticaDescriptivaUnivariada->setGeometry(QRect(0, 0, 480, 561));
         grupoDeOpcionesDeOtrosEstadisticosDescriptivosBasicos_2 = new QGroupBox(estadisticaDescriptivaUnivariada);
         grupoDeOpcionesDeOtrosEstadisticosDescriptivosBasicos_2->setObjectName(QString::fromUtf8("grupoDeOpcionesDeOtrosEstadisticosDescriptivosBasicos_2"));
         grupoDeOpcionesDeOtrosEstadisticosDescriptivosBasicos_2->setGeometry(QRect(9, 390, 171, 90));
@@ -1217,7 +1217,8 @@ public:
         VentanaPrincipal->setCentralWidget(ventanaPrincipal);
         barraDeMenus = new QMenuBar(VentanaPrincipal);
         barraDeMenus->setObjectName(QString::fromUtf8("barraDeMenus"));
-        barraDeMenus->setGeometry(QRect(0, 0, 1204, 24));
+        barraDeMenus->setGeometry(QRect(0, 0, 1204, 22));
+        barraDeMenus->setFont(font2);
         menuArchivo = new QMenu(barraDeMenus);
         menuArchivo->setObjectName(QString::fromUtf8("menuArchivo"));
         menuArchivo->setFont(font1);
@@ -1242,6 +1243,7 @@ public:
         VentanaPrincipal->setMenuBar(barraDeMenus);
         barraDeHerramientas = new QToolBar(VentanaPrincipal);
         barraDeHerramientas->setObjectName(QString::fromUtf8("barraDeHerramientas"));
+        barraDeHerramientas->setFont(font2);
         VentanaPrincipal->addToolBar(Qt::TopToolBarArea, barraDeHerramientas);
         barraDeEstado = new QStatusBar(VentanaPrincipal);
         barraDeEstado->setObjectName(QString::fromUtf8("barraDeEstado"));

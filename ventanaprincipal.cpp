@@ -41,8 +41,6 @@ void VentanaPrincipal::closeEvent(QCloseEvent *event)
     ///##############################
     else
     {
-        cerrarConexionALaBdFuncional();
-        eliminarArchivoDeLaBdFuncional();
         exit(0);
     }
  }
