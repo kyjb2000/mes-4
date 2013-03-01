@@ -96,34 +96,59 @@ bool formatoDelArchivoCSVCorrecto(FILE *archivoCSVParaImportar)
 ///##############################
 ///### Procedimiento para insertar los primeros 99 casos -o menos- del archivo CSV
 ///##############################
-void VentanaPrincipal::insertarPrimeros99CasosOMenosDelArchivoCSV()
+bool VentanaPrincipal::insertarPrimeros99CasosOMenosDelArchivoCSV()
 {
     unsigned long totalDeCasosLeidos;
+    unsigned long fila;
 
     ///##############################
-    ///### Sección de inserción de los primeros 99 casos -o menos- del archivo CSV en la tabla de datos temporal
+    ///### Abriendo el archivo CSV para lectura
     ///##############################
-    archivoDeEntrada.open(nombreDeArchivoCSV.toAscii().data());
-    dialogoParaImportarUnArchivoCSV->ui->nombreDelArchivoCSVAImportar->setText(nombreDeArchivoCSV.toAscii().data());
-    dialogoParaImportarUnArchivoCSV->ui->numeroDeVariables->setText(QString::number(numeroDeVariablesTemporal));
-    dialogoParaImportarUnArchivoCSV->ui->numeroDeCasos->setText(QString::number(numeroDeCasosTemporal));
+    QFile archivoCSV(nombreDeArchivoCSV.toAscii().data());
+    QString linea;
+    if (!archivoCSV.open(QIODevice::ReadOnly))
+    {
+        return false;
+    }
+    QTextStream cadena(&archivoCSV);
     ///##############################
     ///### Se elimina el primer registro en caso de que las variables estén en la primera línea
     ///##############################
     if (dialogoParaImportarUnArchivoCSV->ui->variablesEnPrimeraFila->isChecked())
     {
-        getline(archivoDeEntrada, linea);
+        QString line = cadena.readLine();
+        numeroDeCasosTemporal--;
     }
+    ///##############################
+    ///### Desplegado del nombre del archivo, numero de variables, numero de casos y configuración del numero de columnas y filas
+    ///### de las tablas de variables y de datos
+    ///##############################
+    dialogoParaImportarUnArchivoCSV->ui->nombreDelArchivoCSVAImportar->setText(nombreDeArchivoCSV.toAscii().data());
+    dialogoParaImportarUnArchivoCSV->ui->numeroDeVariables->setText(QString::number(numeroDeVariablesTemporal));
+    dialogoParaImportarUnArchivoCSV->ui->numeroDeCasos->setText(QString::number(numeroDeCasosTemporal));
+    dialogoParaImportarUnArchivoCSV->ui->tablaDeVariablesTemporal->setRowCount(numeroDeVariablesTemporal);
+    (numeroDeCasosTemporal < 99)
+        ? dialogoParaImportarUnArchivoCSV->ui->tablaDeDatosTemporal->setRowCount(numeroDeCasosTemporal)
+        : dialogoParaImportarUnArchivoCSV->ui->tablaDeDatosTemporal->setRowCount(99);
+    dialogoParaImportarUnArchivoCSV->ui->tablaDeDatosTemporal->setColumnCount(numeroDeVariablesTemporal);
+    ///##############################
+    ///### Llenado de la tabla de datos temporal
+    ///##############################
     totalDeCasosLeidos = 0;
-    while(getline(archivoDeEntrada, linea)  && archivoDeEntrada.good() && (totalDeCasosLeidos < 99))
+    fila = 0;
+    while(!cadena.atEnd())
     {
-        /*strcpy (consulta, "insert into datos values(");
-        strcat (consulta, linea.c_str());
-        strcat (consulta, ")");
-        QSqlQuery insertarRegistrosDeDatos (consulta, dialogoParaImportarArchivosCSV->baseDeDatosTemporal);*/
-        totalDeCasosLeidos++;
+        QString linea = cadena.readLine();
+        QStringList campos = linea.split(",");
+        for (int i = 0; i < campos.size(); ++i)
+        {
+            QTableWidgetItem *dato=new QTableWidgetItem (campos.at(i).toLocal8Bit().constData());
+            dialogoParaImportarUnArchivoCSV->ui->tablaDeDatosTemporal->setItem(i, fila, dato);
+        }
+        fila++;
     }
-    archivoDeEntrada.close();
+    archivoCSV.close();
+    return true;
 }
 
 ///##############################
@@ -156,8 +181,11 @@ void VentanaPrincipal::on_accionImportarArchivoConFormatoCSV_triggered()
         else
         {
             ///##############################
-            ///### Se muestra el diálogo para la importación de un archivo CSV
+            ///### Se cosntruye y muestra el diálogo para la importación de un archivo CSV
             ///##############################
+            dialogoParaImportarUnArchivoCSV = new DialogoParaImportarArchivosCSV();
+            dialogoParaImportarUnArchivoCSV->ui->nombreDelArchivoCSVAImportar->setText(nombreDeArchivoCSV.toAscii().data());
+            dialogoParaImportarUnArchivoCSV->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
             dialogoParaImportarUnArchivoCSV->show();
             ///##############################
             ///### Se verifica que el formato del archivo CSV seleccionado sea correcto
@@ -167,13 +195,25 @@ void VentanaPrincipal::on_accionImportarArchivoConFormatoCSV_triggered()
             if (formatoDelArchivoCSVCorrecto(archivoCSVParaImportar))
             {
                 numeroDeCasosTemporal = dimensionDeLosDatos.totalDeCasos;
-                insertarPrimeros99CasosOMenosDelArchivoCSV();
-                ///##############################
-                ///### Definición de acciones--->procedimientos y funciones para el diálogo de importación de archivos CSV
-                ///##############################
-                QObject::connect (dialogoParaImportarUnArchivoCSV->ui->variablesEnPrimeraFila,SIGNAL(clicked()),this,SLOT(cambioEnCheckBoxVariablesEnLaPrimeraFila()));
-                QObject::connect (dialogoParaImportarUnArchivoCSV->ui->botonCancelar,SIGNAL(clicked()),this,SLOT(botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()));
-                QObject::connect (dialogoParaImportarUnArchivoCSV->ui->botonAceptar,SIGNAL(clicked()),this,SLOT(botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()));
+                if (insertarPrimeros99CasosOMenosDelArchivoCSV())
+                {
+                    ///##############################
+                    ///### Definición de acciones--->procedimientos y funciones para el diálogo de importación de archivos CSV
+                    ///##############################
+                    QObject::connect (dialogoParaImportarUnArchivoCSV->ui->variablesEnPrimeraFila,SIGNAL(clicked()),this,SLOT(cambioEnCheckBoxVariablesEnLaPrimeraFila()));
+                    QObject::connect (dialogoParaImportarUnArchivoCSV->ui->botonCancelar,SIGNAL(clicked()),this,SLOT(botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()));
+                    QObject::connect (dialogoParaImportarUnArchivoCSV->ui->botonAceptar,SIGNAL(clicked()),this,SLOT(botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()));
+                }
+                else
+                {
+                    ///##############################
+                    ///### Error al leer el archivo CSV
+                    ///##############################
+                    QMessageBox mensajeErrorAlLeerElArchivoCSV;
+                    mensajeErrorAlLeerElArchivoCSV.setText(QString::fromUtf8(errorAlLeerElArchivoCSV));
+                    mensajeErrorAlLeerElArchivoCSV.exec();
+                    dialogoParaImportarUnArchivoCSV->~DialogoParaImportarArchivosCSV();
+                }
             }
             else
             {

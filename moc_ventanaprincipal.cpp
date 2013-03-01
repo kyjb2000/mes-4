@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ventanaprincipal.h'
 **
-** Created: Thu Feb 28 17:11:22 2013
-**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
+** Created: Thu Feb 28 20:02:45 2013
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -10,8 +10,8 @@
 #include "ventanaprincipal.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'ventanaprincipal.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 62
-#error "This file was generated using the moc from 4.7.4. It"
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,7 +20,7 @@ QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_VentanaPrincipal[] = {
 
  // content:
-       5,       // revision
+       6,       // revision
        0,       // classname
        0,    0, // classinfo
        6,   14, // methods
@@ -33,10 +33,10 @@ static const uint qt_meta_data_VentanaPrincipal[] = {
  // slots: signature, parameters, type, tag, flags
       18,   17,   17,   17, 0x08,
       45,   17,   17,   17, 0x08,
-      95,   17,   17,   17, 0x08,
-     140,   17,   17,   17, 0x08,
-     183,   17,   17,   17, 0x08,
-     241,   17,   17,   17, 0x08,
+     100,   17,   95,   17, 0x08,
+     145,   17,   17,   17, 0x08,
+     188,   17,   17,   17, 0x08,
+     246,   17,   17,   17, 0x08,
 
        0        // eod
 };
@@ -44,15 +44,37 @@ static const uint qt_meta_data_VentanaPrincipal[] = {
 static const char qt_meta_stringdata_VentanaPrincipal[] = {
     "VentanaPrincipal\0\0on_accionSalir_triggered()\0"
     "on_accionImportarArchivoConFormatoCSV_triggered()\0"
-    "insertarPrimeros99CasosOMenosDelArchivoCSV()\0"
+    "bool\0insertarPrimeros99CasosOMenosDelArchivoCSV()\0"
     "cambioEnCheckBoxVariablesEnLaPrimeraFila()\0"
     "botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()\0"
     "botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()\0"
 };
 
+void VentanaPrincipal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        VentanaPrincipal *_t = static_cast<VentanaPrincipal *>(_o);
+        switch (_id) {
+        case 0: _t->on_accionSalir_triggered(); break;
+        case 1: _t->on_accionImportarArchivoConFormatoCSV_triggered(); break;
+        case 2: { bool _r = _t->insertarPrimeros99CasosOMenosDelArchivoCSV();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 3: _t->cambioEnCheckBoxVariablesEnLaPrimeraFila(); break;
+        case 4: _t->botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido(); break;
+        case 5: _t->botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido(); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData VentanaPrincipal::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
 const QMetaObject VentanaPrincipal::staticMetaObject = {
     { &QMainWindow::staticMetaObject, qt_meta_stringdata_VentanaPrincipal,
-      qt_meta_data_VentanaPrincipal, 0 }
+      qt_meta_data_VentanaPrincipal, &staticMetaObjectExtraData }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
@@ -78,15 +100,8 @@ int VentanaPrincipal::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        switch (_id) {
-        case 0: on_accionSalir_triggered(); break;
-        case 1: on_accionImportarArchivoConFormatoCSV_triggered(); break;
-        case 2: insertarPrimeros99CasosOMenosDelArchivoCSV(); break;
-        case 3: cambioEnCheckBoxVariablesEnLaPrimeraFila(); break;
-        case 4: botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido(); break;
-        case 5: botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido(); break;
-        default: ;
-        }
+        if (_id < 6)
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 6;
     }
     return _id;

@@ -18,6 +18,8 @@
 #include <sys/stat.h>
 #include <fstream>
 #include <QSqlQuery>
+#include <QTextStream>
+#include <QFile>
 
 ///##############################
 ///### Variables de la base de datos
@@ -52,8 +54,6 @@ QSqlDatabase *baseDeDatosTemporal;
 QSqlTableModel *modeloDeLaBaseDeDatosTemporalParaDatos;
 QSqlTableModel *modeloDeLaBaseDeDatosTemporalParaVariables;
 QString nombreDeLaConexionALaBdTemporal;
-ifstream archivoDeEntrada;
-string linea;
 
 ///##############################
 ///### Variables relativas a la base de datos temporal

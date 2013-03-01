@@ -12,9 +12,6 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
     ///### Incialización de variables necesarias al abrir la aplicación
     ///##############################
     baseDeDatosEnUso = false;
-    dialogoParaImportarUnArchivoCSV = new DialogoParaImportarArchivosCSV();
-    dialogoParaImportarUnArchivoCSV->ui->nombreDelArchivoCSVAImportar->setText(nombreDeArchivoCSV.toAscii().data());
-    dialogoParaImportarUnArchivoCSV->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 }
 
 VentanaPrincipal::~VentanaPrincipal()
