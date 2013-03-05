@@ -94,7 +94,6 @@ bool formatoDelArchivoCSVCorrecto(FILE *archivoCSVParaImportar)
 }
 
 ///##############################
-<<<<<<< HEAD
 ///### Función para realizar la conexión a la base de datos temporal
 ///##############################
 bool VentanaPrincipal::conexionCorrectaALaBdTemporal()
