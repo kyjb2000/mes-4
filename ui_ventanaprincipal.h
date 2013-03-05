@@ -1,8 +1,13 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ventanaprincipal.ui'
 **
+<<<<<<< HEAD
 ** Created: Tue Feb 26 11:33:57 2013
 **      by: Qt User Interface Compiler version 4.8.2
+=======
+** Created: Mon Mar 4 12:45:48 2013
+**      by: Qt User Interface Compiler version 4.7.4
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -252,7 +257,11 @@ public:
         resultadosEstadisticosDescriptivosUnivariados->setSizePolicy(sizePolicy);
         resultadosEstadisticosDescriptivosUnivariados->setMinimumSize(QSize(480, 0));
         resultadosEstadisticosDescriptivosUnivariados->setFont(font2);
+<<<<<<< HEAD
         resultadosEstadisticosDescriptivosUnivariados->setUrl(QUrl(QString::fromUtf8("about:blank")));
+=======
+        resultadosEstadisticosDescriptivosUnivariados->setUrl(QUrl("about:blank"));
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
 
         gridLayout_4->addWidget(resultadosEstadisticosDescriptivosUnivariados, 0, 1, 1, 1);
 
@@ -269,7 +278,11 @@ public:
         cajaDeOpcionesDeAnalisisDeEstadisticosDescriptivos->setFont(font2);
         estadisticaDescriptivaUnivariada = new QWidget();
         estadisticaDescriptivaUnivariada->setObjectName(QString::fromUtf8("estadisticaDescriptivaUnivariada"));
+<<<<<<< HEAD
         estadisticaDescriptivaUnivariada->setGeometry(QRect(0, 0, 480, 560));
+=======
+        estadisticaDescriptivaUnivariada->setGeometry(QRect(0, 0, 480, 561));
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         grupoDeOpcionesDeOtrosEstadisticosDescriptivosBasicos_2 = new QGroupBox(estadisticaDescriptivaUnivariada);
         grupoDeOpcionesDeOtrosEstadisticosDescriptivosBasicos_2->setObjectName(QString::fromUtf8("grupoDeOpcionesDeOtrosEstadisticosDescriptivosBasicos_2"));
         grupoDeOpcionesDeOtrosEstadisticosDescriptivosBasicos_2->setGeometry(QRect(9, 390, 171, 90));
@@ -1217,7 +1230,12 @@ public:
         VentanaPrincipal->setCentralWidget(ventanaPrincipal);
         barraDeMenus = new QMenuBar(VentanaPrincipal);
         barraDeMenus->setObjectName(QString::fromUtf8("barraDeMenus"));
+<<<<<<< HEAD
         barraDeMenus->setGeometry(QRect(0, 0, 1204, 24));
+=======
+        barraDeMenus->setGeometry(QRect(0, 0, 1204, 22));
+        barraDeMenus->setFont(font2);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         menuArchivo = new QMenu(barraDeMenus);
         menuArchivo->setObjectName(QString::fromUtf8("menuArchivo"));
         menuArchivo->setFont(font1);
@@ -1242,6 +1260,10 @@ public:
         VentanaPrincipal->setMenuBar(barraDeMenus);
         barraDeHerramientas = new QToolBar(VentanaPrincipal);
         barraDeHerramientas->setObjectName(QString::fromUtf8("barraDeHerramientas"));
+<<<<<<< HEAD
+=======
+        barraDeHerramientas->setFont(font2);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         VentanaPrincipal->addToolBar(Qt::TopToolBarArea, barraDeHerramientas);
         barraDeEstado = new QStatusBar(VentanaPrincipal);
         barraDeEstado->setObjectName(QString::fromUtf8("barraDeEstado"));

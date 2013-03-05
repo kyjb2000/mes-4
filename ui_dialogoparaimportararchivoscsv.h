@@ -1,8 +1,13 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialogoparaimportararchivoscsv.ui'
 **
+<<<<<<< HEAD
 ** Created: Tue Feb 26 11:33:57 2013
 **      by: Qt User Interface Compiler version 4.8.2
+=======
+** Created: Mon Mar 4 12:54:32 2013
+**      by: Qt User Interface Compiler version 4.7.4
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -22,7 +27,11 @@
 #include <QtGui/QLineEdit>
 #include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
+<<<<<<< HEAD
 #include <QtGui/QTableView>
+=======
+#include <QtGui/QTableWidget>
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
 
 QT_BEGIN_NAMESPACE
 
@@ -30,7 +39,11 @@ class Ui_DialogoParaImportarArchivosCSV
 {
 public:
     QGroupBox *cajaDeDatos;
+<<<<<<< HEAD
     QTableView *tablaDeDatosTemporal;
+=======
+    QTableWidget *tablaDeDatosTemporal;
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
     QLabel *etiquetaNumeroDeCasos;
     QLineEdit *numeroDeCasos;
     QProgressBar *porcentajeDeVaciado;
@@ -39,7 +52,11 @@ public:
     QCheckBox *variablesEnPrimeraFila;
     QLineEdit *numeroDeVariables;
     QLabel *etiquetaNumeroDeVariables;
+<<<<<<< HEAD
     QTableView *tablaDeVariablesTemporal;
+=======
+    QTableWidget *tablaDeVariablesTemporal;
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
     QGroupBox *cajaDeDatosDelArchivoCSV;
     QLabel *etiquetaNombre;
     QLineEdit *nombreDelArchivoCSVAImportar;
@@ -126,6 +143,7 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
         palette.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
         cajaDeDatos->setPalette(palette);
+<<<<<<< HEAD
         cajaDeDatos->setFont(font);
         cajaDeDatos->setAutoFillBackground(true);
         tablaDeDatosTemporal = new QTableView(cajaDeDatos);
@@ -135,6 +153,20 @@ public:
         QFont font1;
         font1.setPointSize(9);
         tablaDeDatosTemporal->setFont(font1);
+=======
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Arial"));
+        font1.setPointSize(9);
+        cajaDeDatos->setFont(font1);
+        cajaDeDatos->setAutoFillBackground(true);
+        tablaDeDatosTemporal = new QTableWidget(cajaDeDatos);
+        tablaDeDatosTemporal->setObjectName(QString::fromUtf8("tablaDeDatosTemporal"));
+        tablaDeDatosTemporal->setEnabled(true);
+        tablaDeDatosTemporal->setGeometry(QRect(0, 39, 654, 120));
+        QFont font2;
+        font2.setPointSize(9);
+        tablaDeDatosTemporal->setFont(font2);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         tablaDeDatosTemporal->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tablaDeDatosTemporal->setTabKeyNavigation(false);
         tablaDeDatosTemporal->setProperty("showDropIndicator", QVariant(false));
@@ -142,7 +174,11 @@ public:
         etiquetaNumeroDeCasos = new QLabel(cajaDeDatos);
         etiquetaNumeroDeCasos->setObjectName(QString::fromUtf8("etiquetaNumeroDeCasos"));
         etiquetaNumeroDeCasos->setGeometry(QRect(474, 15, 51, 15));
+<<<<<<< HEAD
         etiquetaNumeroDeCasos->setFont(font1);
+=======
+        etiquetaNumeroDeCasos->setFont(font2);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         numeroDeCasos = new QLineEdit(cajaDeDatos);
         numeroDeCasos->setObjectName(QString::fromUtf8("numeroDeCasos"));
         numeroDeCasos->setGeometry(QRect(525, 9, 111, 24));
@@ -154,7 +190,11 @@ public:
         etiquetaPorcentajeDeVaciado = new QLabel(cajaDeDatos);
         etiquetaPorcentajeDeVaciado->setObjectName(QString::fromUtf8("etiquetaPorcentajeDeVaciado"));
         etiquetaPorcentajeDeVaciado->setGeometry(QRect(348, 15, 57, 15));
+<<<<<<< HEAD
         etiquetaPorcentajeDeVaciado->setFont(font1);
+=======
+        etiquetaPorcentajeDeVaciado->setFont(font2);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         cajaDeVariables = new QGroupBox(DialogoParaImportarArchivosCSV);
         cajaDeVariables->setObjectName(QString::fromUtf8("cajaDeVariables"));
         cajaDeVariables->setGeometry(QRect(9, 81, 654, 177));
@@ -205,13 +245,21 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
         palette1.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
         cajaDeVariables->setPalette(palette1);
+<<<<<<< HEAD
         cajaDeVariables->setFont(font);
+=======
+        cajaDeVariables->setFont(font1);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         cajaDeVariables->setAutoFillBackground(true);
         variablesEnPrimeraFila = new QCheckBox(cajaDeVariables);
         variablesEnPrimeraFila->setObjectName(QString::fromUtf8("variablesEnPrimeraFila"));
         variablesEnPrimeraFila->setEnabled(false);
         variablesEnPrimeraFila->setGeometry(QRect(12, 21, 186, 21));
+<<<<<<< HEAD
         variablesEnPrimeraFila->setFont(font1);
+=======
+        variablesEnPrimeraFila->setFont(font2);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         numeroDeVariables = new QLineEdit(cajaDeVariables);
         numeroDeVariables->setObjectName(QString::fromUtf8("numeroDeVariables"));
         numeroDeVariables->setGeometry(QRect(576, 18, 60, 24));
@@ -220,6 +268,7 @@ public:
         etiquetaNumeroDeVariables = new QLabel(cajaDeVariables);
         etiquetaNumeroDeVariables->setObjectName(QString::fromUtf8("etiquetaNumeroDeVariables"));
         etiquetaNumeroDeVariables->setGeometry(QRect(507, 24, 60, 15));
+<<<<<<< HEAD
         QFont font2;
         font2.setFamily(QString::fromUtf8("Arial"));
         font2.setPointSize(9);
@@ -228,6 +277,25 @@ public:
         tablaDeVariablesTemporal->setObjectName(QString::fromUtf8("tablaDeVariablesTemporal"));
         tablaDeVariablesTemporal->setGeometry(QRect(0, 51, 654, 111));
         tablaDeVariablesTemporal->setFont(font1);
+=======
+        etiquetaNumeroDeVariables->setFont(font1);
+        tablaDeVariablesTemporal = new QTableWidget(cajaDeVariables);
+        if (tablaDeVariablesTemporal->columnCount() < 5)
+            tablaDeVariablesTemporal->setColumnCount(5);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        tablaDeVariablesTemporal->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        tablaDeVariablesTemporal->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        tablaDeVariablesTemporal->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        tablaDeVariablesTemporal->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        tablaDeVariablesTemporal->setHorizontalHeaderItem(4, __qtablewidgetitem4);
+        tablaDeVariablesTemporal->setObjectName(QString::fromUtf8("tablaDeVariablesTemporal"));
+        tablaDeVariablesTemporal->setGeometry(QRect(0, 51, 654, 111));
+        tablaDeVariablesTemporal->setFont(font2);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         tablaDeVariablesTemporal->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tablaDeVariablesTemporal->setTabKeyNavigation(false);
         tablaDeVariablesTemporal->setProperty("showDropIndicator", QVariant(false));
@@ -282,12 +350,20 @@ public:
         palette2.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
         palette2.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
         cajaDeDatosDelArchivoCSV->setPalette(palette2);
+<<<<<<< HEAD
         cajaDeDatosDelArchivoCSV->setFont(font);
+=======
+        cajaDeDatosDelArchivoCSV->setFont(font1);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         cajaDeDatosDelArchivoCSV->setAutoFillBackground(true);
         etiquetaNombre = new QLabel(cajaDeDatosDelArchivoCSV);
         etiquetaNombre->setObjectName(QString::fromUtf8("etiquetaNombre"));
         etiquetaNombre->setGeometry(QRect(12, 27, 45, 15));
+<<<<<<< HEAD
         etiquetaNombre->setFont(font1);
+=======
+        etiquetaNombre->setFont(font2);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         nombreDelArchivoCSVAImportar = new QLineEdit(cajaDeDatosDelArchivoCSV);
         nombreDelArchivoCSVAImportar->setObjectName(QString::fromUtf8("nombreDelArchivoCSVAImportar"));
         nombreDelArchivoCSVAImportar->setGeometry(QRect(66, 21, 450, 24));
@@ -296,7 +372,11 @@ public:
         etiquetaPorcentajeDeAnalisis = new QLabel(cajaDeDatosDelArchivoCSV);
         etiquetaPorcentajeDeAnalisis->setObjectName(QString::fromUtf8("etiquetaPorcentajeDeAnalisis"));
         etiquetaPorcentajeDeAnalisis->setGeometry(QRect(528, 27, 57, 15));
+<<<<<<< HEAD
         etiquetaPorcentajeDeAnalisis->setFont(font1);
+=======
+        etiquetaPorcentajeDeAnalisis->setFont(font2);
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         porcentajeDeAnalisis = new QProgressBar(cajaDeDatosDelArchivoCSV);
         porcentajeDeAnalisis->setObjectName(QString::fromUtf8("porcentajeDeAnalisis"));
         porcentajeDeAnalisis->setGeometry(QRect(591, 21, 45, 24));
@@ -328,6 +408,19 @@ public:
         variablesEnPrimeraFila->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "variables en la primera l\303\255nea", 0, QApplication::UnicodeUTF8));
         numeroDeVariables->setText(QString());
         etiquetaNumeroDeVariables->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "# variables", 0, QApplication::UnicodeUTF8));
+<<<<<<< HEAD
+=======
+        QTableWidgetItem *___qtablewidgetitem = tablaDeVariablesTemporal->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Nombre", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem1 = tablaDeVariablesTemporal->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Tipo", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem2 = tablaDeVariablesTemporal->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Etiqueta", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem3 = tablaDeVariablesTemporal->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Valores", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem4 = tablaDeVariablesTemporal->horizontalHeaderItem(4);
+        ___qtablewidgetitem4->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Escala", 0, QApplication::UnicodeUTF8));
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         cajaDeDatosDelArchivoCSV->setTitle(QApplication::translate("DialogoParaImportarArchivosCSV", "Datos del archivo CSV", 0, QApplication::UnicodeUTF8));
         etiquetaNombre->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Nombre", 0, QApplication::UnicodeUTF8));
         etiquetaPorcentajeDeAnalisis->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "% an\303\241lisis", 0, QApplication::UnicodeUTF8));

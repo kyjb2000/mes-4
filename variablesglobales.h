@@ -18,6 +18,7 @@
 #include <sys/stat.h>
 #include <fstream>
 #include <QSqlQuery>
+<<<<<<< HEAD
 
 //using namespace std;
 
@@ -25,6 +26,15 @@
 ///### Variable de control relativas al manejo de la base de datos funcional
 ///##############################
 bool baseDeDatosFuncionalEnUso;
+=======
+#include <QTextStream>
+#include <QFile>
+
+///##############################
+///### Variables de la base de datos
+///##############################
+bool baseDeDatosEnUso;
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
 DialogoParaGuardarArchivoDeDatosSiONo *guardarBaseDeDatosFuncional;
 QSqlRecord arregloDeVariablesFuncional;
 
@@ -54,8 +64,11 @@ QSqlDatabase *baseDeDatosTemporal;
 QSqlTableModel *modeloDeLaBaseDeDatosTemporalParaDatos;
 QSqlTableModel *modeloDeLaBaseDeDatosTemporalParaVariables;
 QString nombreDeLaConexionALaBdTemporal;
+<<<<<<< HEAD
 ifstream archivoDeEntrada;
 string linea;
+=======
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
 
 ///##############################
 ///### Variables relativas a la base de datos temporal

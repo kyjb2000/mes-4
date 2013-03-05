@@ -1,8 +1,13 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialogoparaguardararchivodedatossiono.ui'
 **
+<<<<<<< HEAD
 ** Created: Tue Feb 26 11:33:57 2013
 **      by: Qt User Interface Compiler version 4.8.2
+=======
+** Created: Mon Mar 4 12:45:49 2013
+**      by: Qt User Interface Compiler version 4.7.4
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/

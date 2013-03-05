@@ -9,9 +9,15 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
 {
     ui->setupUi(this);
     ///##############################
+<<<<<<< HEAD
     ///### Variable de control de la base de datos funcional en uso
     ///##############################
     baseDeDatosFuncionalEnUso = false;
+=======
+    ///### Incialización de variables necesarias al abrir la aplicación
+    ///##############################
+    baseDeDatosEnUso = false;
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
 }
 
 VentanaPrincipal::~VentanaPrincipal()
@@ -28,7 +34,11 @@ void VentanaPrincipal::closeEvent(QCloseEvent *event)
     ///##############################
     ///### Verificar si hay una base de datos funcional activa antes de salir
     ///##############################
+<<<<<<< HEAD
     if (baseDeDatosFuncionalEnUso)
+=======
+    if (baseDeDatosEnUso)
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
     {
         guardarBaseDeDatosFuncional = new DialogoParaGuardarArchivoDeDatosSiONo(0, true);
         guardarBaseDeDatosFuncional->show();
@@ -38,8 +48,11 @@ void VentanaPrincipal::closeEvent(QCloseEvent *event)
     ///##############################
     else
     {
+<<<<<<< HEAD
         cerrarConexionALaBdFuncional();
         eliminarArchivoDeLaBdFuncional();
+=======
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         exit(0);
     }
  }
