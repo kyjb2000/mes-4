@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ventanaprincipal.ui'
 **
-** Created: Thu Feb 28 18:43:55 2013
-**      by: Qt User Interface Compiler version 4.8.3
+** Created: Mon Mar 4 12:45:48 2013
+**      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -252,7 +252,7 @@ public:
         resultadosEstadisticosDescriptivosUnivariados->setSizePolicy(sizePolicy);
         resultadosEstadisticosDescriptivosUnivariados->setMinimumSize(QSize(480, 0));
         resultadosEstadisticosDescriptivosUnivariados->setFont(font2);
-        resultadosEstadisticosDescriptivosUnivariados->setUrl(QUrl(QString::fromUtf8("about:blank")));
+        resultadosEstadisticosDescriptivosUnivariados->setUrl(QUrl("about:blank"));
 
         gridLayout_4->addWidget(resultadosEstadisticosDescriptivosUnivariados, 0, 1, 1, 1);
 

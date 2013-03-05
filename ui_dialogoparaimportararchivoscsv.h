@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialogoparaimportararchivoscsv.ui'
 **
-** Created: Thu Feb 28 17:16:43 2013
+** Created: Mon Mar 4 12:54:32 2013
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -225,6 +225,18 @@ public:
         etiquetaNumeroDeVariables->setGeometry(QRect(507, 24, 60, 15));
         etiquetaNumeroDeVariables->setFont(font1);
         tablaDeVariablesTemporal = new QTableWidget(cajaDeVariables);
+        if (tablaDeVariablesTemporal->columnCount() < 5)
+            tablaDeVariablesTemporal->setColumnCount(5);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        tablaDeVariablesTemporal->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        tablaDeVariablesTemporal->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        tablaDeVariablesTemporal->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        tablaDeVariablesTemporal->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        tablaDeVariablesTemporal->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         tablaDeVariablesTemporal->setObjectName(QString::fromUtf8("tablaDeVariablesTemporal"));
         tablaDeVariablesTemporal->setGeometry(QRect(0, 51, 654, 111));
         tablaDeVariablesTemporal->setFont(font2);
@@ -328,6 +340,16 @@ public:
         variablesEnPrimeraFila->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "variables en la primera l\303\255nea", 0, QApplication::UnicodeUTF8));
         numeroDeVariables->setText(QString());
         etiquetaNumeroDeVariables->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "# variables", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem = tablaDeVariablesTemporal->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Nombre", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem1 = tablaDeVariablesTemporal->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Tipo", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem2 = tablaDeVariablesTemporal->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Etiqueta", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem3 = tablaDeVariablesTemporal->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Valores", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem4 = tablaDeVariablesTemporal->horizontalHeaderItem(4);
+        ___qtablewidgetitem4->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Escala", 0, QApplication::UnicodeUTF8));
         cajaDeDatosDelArchivoCSV->setTitle(QApplication::translate("DialogoParaImportarArchivosCSV", "Datos del archivo CSV", 0, QApplication::UnicodeUTF8));
         etiquetaNombre->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "Nombre", 0, QApplication::UnicodeUTF8));
         etiquetaPorcentajeDeAnalisis->setText(QApplication::translate("DialogoParaImportarArchivosCSV", "% an\303\241lisis", 0, QApplication::UnicodeUTF8));

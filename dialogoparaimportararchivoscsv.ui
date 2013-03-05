@@ -1079,6 +1079,31 @@
     <property name="dragDropOverwriteMode">
      <bool>false</bool>
     </property>
+    <column>
+     <property name="text">
+      <string>Nombre</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Tipo</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Etiqueta</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Valores</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Escala</string>
+     </property>
+    </column>
    </widget>
   </widget>
   <widget class="QGroupBox" name="cajaDeDatosDelArchivoCSV">

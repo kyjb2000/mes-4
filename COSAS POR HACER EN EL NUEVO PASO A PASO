@@ -1,0 +1,10 @@
+1. Implementar guardar base de datos abierta (botón Sí en DialogoParaGuardarArchivoDeDatosSiONo)
+2. Implementar la cancelación del proceso de análisis del archivo CSV cuando se oprime el botón cancelar
+3. Implementar la cancelación del proceso de vaciado del archivo CSV cuando se oprime el botón cancelar
+4. Verificar si es posible que la ventana de importación del archivo csv no se oculte cuando se da click a la ventana principal cuando hay un mensaje de error
+5. Buscar un analizador de archivos CSV mejor y/o verificar que todo esté correcto después del análisis, que haya garantía, entre "" obligatorio para SQLITE3
+8. Ver lo de "try" para cachar el error de archivoDeEntrada.open
+9. Falta ver si después se puede editar tipos y valores cuando se importa un archivo CSV
+10. Crear bd debe tomar los tipos de como quedaron en el diálogo de importación de un archivo CSV
+11. Con la variable fila hay calcular el avance de el vaciado del archivo csv
+

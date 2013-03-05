@@ -35,7 +35,6 @@ private slots:
     ///### Funciones relativas al proceso de manejo de archivos csv
     ///##############################
     bool insertarPrimeros99CasosOMenosDelArchivoCSV();
-    void cambioEnCheckBoxVariablesEnLaPrimeraFila();
     void botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido();
     void botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido();
 
