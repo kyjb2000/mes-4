@@ -12,6 +12,7 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
     ///### Incialización de variables necesarias al abrir la aplicación
     ///##############################
     baseDeDatosEnUso = false;
+    baseDeDatos = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
 }
 
 VentanaPrincipal::~VentanaPrincipal()
@@ -30,8 +31,8 @@ void VentanaPrincipal::closeEvent(QCloseEvent *event)
     ///##############################
     if (baseDeDatosEnUso)
     {
-        guardarBaseDeDatosFuncional = new DialogoParaGuardarArchivoDeDatosSiONo(0, true);
-        guardarBaseDeDatosFuncional->show();
+        guardarBaseDeDatos = new DialogoParaGuardarArchivoDeDatosSiONo(0, true);
+        guardarBaseDeDatos->show();
     }
     ///##############################
     ///### Salir de la aplicación

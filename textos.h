@@ -12,6 +12,7 @@ const char *errorAlIntentarAbrirElArchivoCSV = "Error al intentar abrir el archi
 const char *errorDeInicializacionDelAnalizadorDelArchivoCSV = "Error al inicializar el analizador del archivo CSV";
 const char *formatoIncorrectoDelArchivoCSV = "Formato incorrecto del archivo CSV";
 const char *errorAlLeerElArchivoCSV = "Error al leer el archivo CSV";
+const char *errorNoSePuedeCrearLaBaseDeDatos = "No se puede crear la base de datos";
 
 ///##############################
 ///### Etiquetas del tipo de las variables

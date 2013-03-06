@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ventanaprincipal.h'
 **
-** Created: Tue Mar 5 11:49:46 2013
+** Created: Wed Mar 6 16:48:17 2013
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_VentanaPrincipal[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -36,6 +36,8 @@ static const uint qt_meta_data_VentanaPrincipal[] = {
      100,   17,   95,   17, 0x08,
      145,   17,   17,   17, 0x08,
      203,   17,   17,   17, 0x08,
+     260,   17,   95,   17, 0x08,
+     284,   17,   17,   17, 0x08,
 
        0        // eod
 };
@@ -46,6 +48,7 @@ static const char qt_meta_stringdata_VentanaPrincipal[] = {
     "bool\0insertarPrimeros99CasosOMenosDelArchivoCSV()\0"
     "botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()\0"
     "botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido()\0"
+    "conexionCorrectaALaBd()\0cerrarConexionALaBd()\0"
 };
 
 const QMetaObject VentanaPrincipal::staticMetaObject = {
@@ -83,9 +86,12 @@ int VentanaPrincipal::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         case 3: botonCancelarDeLaVentanaDeAnalisisDelArchivoCSVOprimido(); break;
         case 4: botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido(); break;
+        case 5: { bool _r = conexionCorrectaALaBd();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 6: cerrarConexionALaBd(); break;
         default: ;
         }
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }

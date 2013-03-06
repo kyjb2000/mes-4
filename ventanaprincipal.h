@@ -39,8 +39,13 @@ private slots:
     void botonAceptarDeLaVentanaDeAnalisisDelArchivoCSVOprimido();
 
     ///##############################
-    ///### Funciones de la base de datos funcional
+    ///### Funciones de la base de datos
     ///##############################
+    bool conexionCorrectaALaBd();
+    void cerrarConexionALaBd();
+    //void eliminarArchivoDeLaBd();
+    //void actualizarVistasDeLaBd();
+    //bool crearBaseDeDatos(bool variablesEstanEnLaPrimeraFila);
 
 };
 

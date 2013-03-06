@@ -25,14 +25,16 @@
 ///### Variables de la base de datos
 ///##############################
 bool baseDeDatosEnUso;
-DialogoParaGuardarArchivoDeDatosSiONo *guardarBaseDeDatosFuncional;
-QSqlRecord arregloDeVariablesFuncional;
+QSqlDatabase *baseDeDatos;
+QSqlTableModel *modeloParaDatos;
+QSqlTableModel *modeloParaVariables;
+QString nombreDeLaConexionALaBdFuncional;
+DialogoParaGuardarArchivoDeDatosSiONo *guardarBaseDeDatos;
 
 ///##############################
 ///### Variables para la importación de un archivo con formato CSV
 ///##############################
 DialogoParaImportarArchivosCSV *dialogoParaImportarUnArchivoCSV;
-QSqlRecord arregloDeVariablesTemporal;
 
 ///##############################
 ///### Variables de los nombres de los archivos MES y CSV
@@ -44,24 +46,8 @@ QString nombreDeArchivoCSV;
 ///##############################
 unsigned long numeroDeVariablesTemporal;
 unsigned long numeroDeCasosTemporal;
-unsigned long numeroDeVariablesFuncional;
-unsigned long numeroDeCasosFuncional;
-
-///##############################
-///### Variables relativas a la base de datos temporal
-///##############################
-QSqlDatabase *baseDeDatosTemporal;
-QSqlTableModel *modeloDeLaBaseDeDatosTemporalParaDatos;
-QSqlTableModel *modeloDeLaBaseDeDatosTemporalParaVariables;
-QString nombreDeLaConexionALaBdTemporal;
-
-///##############################
-///### Variables relativas a la base de datos temporal
-///##############################
-QSqlDatabase *baseDeDatosFuncional;
-QSqlTableModel *modeloDeLaBaseDeDatosFuncionalParaDatos;
-QSqlTableModel *modeloDeLaBaseDeDatosFuncionalParaVariables;
-QString nombreDeLaConexionALaBdFuncional;
+unsigned long numeroDeVariables;
+unsigned long numeroDeCasos;
 
 ///##############################
 ///### Variables para el control de las consultas a las bases de datos tanto temporal como funcional
