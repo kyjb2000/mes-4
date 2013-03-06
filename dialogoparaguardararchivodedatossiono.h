@@ -20,6 +20,11 @@ public:
 private slots:
     void on_botonNo_clicked();
 
+<<<<<<< HEAD
+    void on_botonSi_clicked();
+
+=======
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
 private:
     ///##############################
     ///### Se pasó a la sección "public" para tener acceso a los elementos desde la clase VentanaPrincipal

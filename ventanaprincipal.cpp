@@ -9,10 +9,19 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
 {
     ui->setupUi(this);
     ///##############################
+<<<<<<< HEAD
+    ///### Variable de control de la base de datos funcional en uso
+    ///##############################
+    baseDeDatosFuncionalEnUso = false;
+=======
     ///### Incialización de variables necesarias al abrir la aplicación
     ///##############################
     baseDeDatosEnUso = false;
+<<<<<<< HEAD
     baseDeDatos = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
+=======
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
+>>>>>>> f969703cb223799254a551f2fe16dfc250f0d13f
 }
 
 VentanaPrincipal::~VentanaPrincipal()
@@ -29,7 +38,11 @@ void VentanaPrincipal::closeEvent(QCloseEvent *event)
     ///##############################
     ///### Verificar si hay una base de datos funcional activa antes de salir
     ///##############################
+<<<<<<< HEAD
+    if (baseDeDatosFuncionalEnUso)
+=======
     if (baseDeDatosEnUso)
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
     {
         guardarBaseDeDatos = new DialogoParaGuardarArchivoDeDatosSiONo(0, true);
         guardarBaseDeDatos->show();
@@ -39,6 +52,11 @@ void VentanaPrincipal::closeEvent(QCloseEvent *event)
     ///##############################
     else
     {
+<<<<<<< HEAD
+        cerrarConexionALaBdFuncional();
+        eliminarArchivoDeLaBdFuncional();
+=======
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
         exit(0);
     }
  }

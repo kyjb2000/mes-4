@@ -451,7 +451,10 @@
    <property name="font">
     <font>
      <family>Arial</family>
+<<<<<<< HEAD
+=======
      <pointsize>9</pointsize>
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
     </font>
    </property>
    <property name="autoFillBackground">
@@ -460,7 +463,11 @@
    <property name="title">
     <string>Datos</string>
    </property>
+<<<<<<< HEAD
+   <widget class="QTableView" name="tablaDeDatosTemporal">
+=======
    <widget class="QTableWidget" name="tablaDeDatosTemporal">
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -983,7 +990,10 @@
    <property name="font">
     <font>
      <family>Arial</family>
+<<<<<<< HEAD
+=======
      <pointsize>9</pointsize>
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
     </font>
    </property>
    <property name="autoFillBackground">
@@ -1053,7 +1063,11 @@
      <string># variables</string>
     </property>
    </widget>
+<<<<<<< HEAD
+   <widget class="QTableView" name="tablaDeVariablesTemporal">
+=======
    <widget class="QTableWidget" name="tablaDeVariablesTemporal">
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -1079,6 +1093,8 @@
     <property name="dragDropOverwriteMode">
      <bool>false</bool>
     </property>
+<<<<<<< HEAD
+=======
     <column>
      <property name="text">
       <string>Nombre</string>
@@ -1104,6 +1120,7 @@
       <string>Escala</string>
      </property>
     </column>
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
    </widget>
   </widget>
   <widget class="QGroupBox" name="cajaDeDatosDelArchivoCSV">
@@ -1533,7 +1550,10 @@
    <property name="font">
     <font>
      <family>Arial</family>
+<<<<<<< HEAD
+=======
      <pointsize>9</pointsize>
+>>>>>>> ab210070f27e857d96696d3b2896d8ab005b9ff9
     </font>
    </property>
    <property name="autoFillBackground">
